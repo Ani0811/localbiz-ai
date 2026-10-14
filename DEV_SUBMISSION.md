@@ -1,3 +1,11 @@
+---
+title: "LocalBiz AI: A Local-First, Zero-Hallucination AI Marketing Copilot for Small Businesses"
+published: true
+tags: hacktoberfest, opensource, ai, nextjs
+cover_image: https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/dashboard.png
+canonical_url: https://github.com/Ani0811/localbiz-ai
+---
+
 *This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 2: Side Hustle](https://dev.to/challenges/hacktoberfest-week2-2026-10-12)*
 
 ## What I Built
@@ -35,23 +43,23 @@ It allows a business owner to:
 Here is a look at **LocalBiz AI** in action:
 
 ### 1. Dashboard & Active Business Profile
-![LocalBiz AI Dashboard](https://raw.githubusercontent.com/anirudhabasuthakur/localbiz-ai/master/assets/screenshots/dashboard.png)
+![LocalBiz AI Dashboard](https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/dashboard.png)
 *Real-time overview displaying the active business profile ('Bengal Artisan Roast & Bake'), rapid creation actions, recent content activity, and the live LM Studio AI status badge.*
 
 ### 2. Business Profile & Product Catalog Management
-![Business Profile Manager](https://raw.githubusercontent.com/anirudhabasuthakur/localbiz-ai/master/assets/screenshots/business_profile.png)
+![Business Profile Manager](https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/business_profile.png)
 *Structured profile manager where exact operating hours, location, contact channels, and itemized catalog items (with verified prices and active deals) are persisted in local SQLite.*
 
 ### 3. AI Marketing Studio with Factual Accuracy Guardrail
-![AI Generation Studio](https://raw.githubusercontent.com/anirudhabasuthakur/localbiz-ai/master/assets/screenshots/generation_workspace.png)
+![AI Generation Studio](https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/generation_workspace.png)
 *Interactive generation studio with 6 format cards, offer picker, tone selector, language selector, and an editable preview protected by the Factual Grounding Shield.*
 
 ### 4. Content History & Inline Editor
-![Content History](https://raw.githubusercontent.com/anirudhabasuthakur/localbiz-ai/master/assets/screenshots/content_history.png)
+![Content History](https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/content_history.png)
 *Full historical archive of generated marketing copy with channel filtering, instant copying, inline editing, and one-click reuse.*
 
 ### 5. Local AI Diagnostics & NVIDIA CUDA GPU Acceleration
-![Settings and AI Health](https://raw.githubusercontent.com/anirudhabasuthakur/localbiz-ai/master/assets/screenshots/settings_diagnostics.png)
+![Settings and AI Health](https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/settings_diagnostics.png)
 *Diagnostic control panel showing live connection status to LM Studio, loaded model verification, and one-click commands for CUDA GPU offload.*
 
 ---
@@ -60,7 +68,7 @@ Here is a look at **LocalBiz AI** in action:
 
 The complete source code is published on GitHub under the MIT License:
 
-{% github anirudhabasuthakur/localbiz-ai %}
+{% github Ani0811/localbiz-ai %}
 
 ### Project Structure
 ```text
