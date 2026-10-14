@@ -215,18 +215,18 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-300">2. Load 3B-4B Model into Memory</span>
               <button
-                onClick={() => copyCommand('lms load google/gemma-3-4b -y')}
+                onClick={() => copyCommand('lms load google/gemma-3-4b --gpu max -y')}
                 className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white"
                 title="Copy command"
               >
-                {copiedCmd === 'lms load google/gemma-3-4b -y' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedCmd === 'lms load google/gemma-3-4b --gpu max -y' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
             <code className="text-xs text-emerald-400 font-mono block bg-slate-900 p-2 rounded">
-              lms load google/gemma-3-4b -y
+              lms load google/gemma-3-4b --gpu max -y
             </code>
             <p className="text-[11px] text-slate-500">
-              Preloads Gemma 3 4B into memory for low-latency marketing generation.
+              Preloads Gemma 3 4B with NVIDIA CUDA GPU offloading for high-speed generation.
             </p>
           </div>
 
@@ -255,18 +255,18 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-300">4. Alternative Reasoning Model</span>
               <button
-                onClick={() => copyCommand('lms load nvidia/nemotron-3-nano-4b -y')}
+                onClick={() => copyCommand('lms load nvidia/nemotron-3-nano-4b --gpu max -y')}
                 className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white"
                 title="Copy command"
               >
-                {copiedCmd === 'lms load nvidia/nemotron-3-nano-4b -y' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedCmd === 'lms load nvidia/nemotron-3-nano-4b --gpu max -y' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
             <code className="text-xs text-emerald-400 font-mono block bg-slate-900 p-2 rounded">
-              lms load nvidia/nemotron-3-nano-4b -y
+              lms load nvidia/nemotron-3-nano-4b --gpu max -y
             </code>
             <p className="text-[11px] text-slate-500">
-              NVIDIA Nemotron 3 Nano 4B with step-by-step reasoning support.
+              NVIDIA Nemotron 3 Nano 4B with CUDA acceleration and step-by-step reasoning.
             </p>
           </div>
         </div>

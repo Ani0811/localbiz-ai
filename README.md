@@ -162,7 +162,7 @@ graph TD
    *Note: Binding to `0.0.0.0` and enabling `--cors` allows Podman containers running in WSL2 to reach the Windows host server.*
 4. **Load the Model into Memory:**
    ```powershell
-   lms load google/gemma-3-4b -y
+   lms load google/gemma-3-4b --gpu max --gpu max -y
    ```
 5. **Verify the Endpoint:**
    ```powershell

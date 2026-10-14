@@ -8,16 +8,22 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - LM_STUDIO_BASE_URL=${LM_STUDIO_CONTAINER_BASE_URL:-http://host.containers.internal:1234/v1}
-      - LM_STUDIO_MODEL=${LM_STUDIO_MODEL:-google/gemma-3-4b}
-      - LM_STUDIO_API_KEY=${LM_STUDIO_API_KEY:-}
-      - LM_STUDIO_TIMEOUT=${LM_STUDIO_TIMEOUT:-90.0}
+      - LM_STUDIO_BASE_URL=
+      - LM_STUDIO_MODEL=
+      - LM_STUDIO_API_KEY=
+      - LM_STUDIO_TIMEOUT=
       - DB_PATH=/app/data/localbiz.db
     volumes:
       - localbiz_data:/app/data
     extra_hosts:
       - "host.containers.internal:host-gateway"
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
     networks:
       - localbiz-net
 
@@ -30,10 +36,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+      - NEXT_PUBLIC_API_URL=
+      - BACKEND_INTERNAL_URL=http://backend:8000
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     networks:
       - localbiz-net
 

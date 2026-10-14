@@ -18,7 +18,9 @@ def get_db_path() -> str:
 async def init_db():
     """Initialize database tables if they do not exist."""
     db_file = get_db_path()
-    async with aiosqlite.connect(db_file) as db:
+    async with aiosqlite.connect(db_file, timeout=15.0) as db:
+        await db.execute("PRAGMA journal_mode = WAL;")
+        await db.execute("PRAGMA busy_timeout = 15000;")
         await db.execute("""
             CREATE TABLE IF NOT EXISTS business_profiles (
                 id TEXT PRIMARY KEY,
@@ -63,7 +65,8 @@ async def init_db():
 @asynccontextmanager
 async def get_db() -> AsyncGenerator[aiosqlite.Connection, None]:
     """Yield an active connection to SQLite."""
-    async with aiosqlite.connect(get_db_path()) as db:
+    async with aiosqlite.connect(get_db_path(), timeout=15.0) as db:
         db.row_factory = aiosqlite.Row
         await db.execute("PRAGMA foreign_keys = ON;")
+        await db.execute("PRAGMA busy_timeout = 15000;")
         yield db

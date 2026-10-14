@@ -46,8 +46,8 @@ class LMStudioProvider:
         url = f"{self.base_url}/models"
         instructions = [
             "1. Launch LM Studio on your Windows host.",
-            "2. Ensure the Local Server is started (run: `lms server start --cors` or start it via GUI).",
-            f"3. Verify model `{self.model}` is downloaded and loaded in memory (`lms load {self.model} -y`).",
+            "2. Ensure the Local Server is started (run: `lms server start --bind 0.0.0.0 --cors` or start it via GUI).",
+            f"3. Verify model `{self.model}` is downloaded and loaded in memory (`lms load {self.model} --gpu max -y`).",
             f"4. Confirm LM Studio Base URL is set to `{self.base_url}`.",
             "5. If running inside Podman containers, ensure host networking or host.containers.internal is accessible."
         ]
@@ -86,7 +86,7 @@ class LMStudioProvider:
                     available_models=model_ids,
                     setup_instructions=[] if is_configured_loaded else [
                         f"Configured model '{self.model}' was not found in loaded models: {model_ids}.",
-                        f"Run `lms load {self.model} -y` in your terminal or select it in LM Studio."
+                        f"Run `lms load {self.model} --gpu max -y` in your terminal or select it in LM Studio."
                     ],
                     error_detail=None
                 )
@@ -177,8 +177,8 @@ class LMStudioProvider:
                 f"Cannot connect to LM Studio at {self.base_url}. Please ensure LM Studio is running and local server is active.",
                 status_code=503,
                 setup_help=[
-                    "Run `lms server start --cors` in PowerShell/Terminal.",
-                    f"Run `lms load {self.model} -y`.",
+                    "Run `lms server start --bind 0.0.0.0 --cors` in PowerShell/Terminal.",
+                    f"Run `lms load {self.model} --gpu max -y`.",
                     f"Check if {self.base_url} is reachable from this machine or container."
                 ]
             )
