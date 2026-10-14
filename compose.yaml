@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: containers/Containerfile.backend
+    container_name: localbiz-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - LM_STUDIO_BASE_URL=${LM_STUDIO_BASE_URL:-http://host.containers.internal:1234/v1}
+      - LM_STUDIO_MODEL=${LM_STUDIO_MODEL:-google/gemma-3-4b}
+      - LM_STUDIO_API_KEY=${LM_STUDIO_API_KEY:-}
+      - LM_STUDIO_TIMEOUT=${LM_STUDIO_TIMEOUT:-90.0}
+      - DB_PATH=/app/data/localbiz.db
+    volumes:
+      - localbiz_data:/app/data
+    extra_hosts:
+      - "host.containers.internal:host-gateway"
+      - "host.docker.internal:host-gateway"
+    networks:
+      - localbiz-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: containers/Containerfile.frontend
+    container_name: localbiz-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - localbiz-net
+
+networks:
+  localbiz-net:
+    driver: bridge
+    name: localbiz-network
+
+volumes:
+  localbiz_data:
+    name: localbiz-sqlite-data
