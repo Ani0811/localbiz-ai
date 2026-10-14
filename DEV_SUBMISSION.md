@@ -134,10 +134,15 @@ Open innovation is not just a philosophical preference—for local small busines
 
 This entire application—from initial repository initialization, FastAPI backend, Pydantic schemas, prompt design, Next.js frontend, Podman containerization, bug fixing (CORS, empty env vars, OCI healthchecks), to automated testing—was pair-programmed with Google DeepMind's Antigravity agentic coding assistant.
 
-You can inspect the complete agent session transcript and architectural decision trail here:
+### Key Milestones Driven with the AI Coding Agent:
+1. **Zero-Hallucination Prompt Architecture**: Crafted strict system constraints enforcing the local business profile as the sole ground truth and designed post-generation heuristic checks for unverified prices and offers.
+2. **LM Studio Provider Isolation**: Implemented a resilient provider handling both reasoning models (`nvidia/nemotron-3-nano-4b`) and standard models (`google/gemma-3-4b`), with timeout handling and 5-step actionable terminal diagnostics.
+3. **Multi-Stage Podman Architecture**: Built production Containerfiles for FastAPI and Next.js standalone runner, container-to-host bridge routing (`host.containers.internal`), and persistent volume mounting.
+4. **Deep Concurrency & Network Debugging**: Diagnosed and resolved subtle container issues including Pydantic empty-string float parsing, OCI health check polling in compose, and SQLite WAL concurrency locks.
 
-<!-- Embed your agent session tag below if using DevRelay -->
-{% agent_session 89a9a903-d561-40bf-8b80-0682d49b2dcc %}
+<!-- Note: If you have uploaded your session via DevRelay, you can embed it with:
+{% agent_session YOUR_DEV_SESSION_ID %}
+-->
 
 ---
 
