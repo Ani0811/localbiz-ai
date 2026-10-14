@@ -1,7 +1,7 @@
 ---
 title: "LocalBiz AI: A Local-First, Zero-Hallucination AI Marketing Copilot for Small Businesses"
 published: true
-tags: hacktoberfest, opensource, ai, nextjs
+tags: devchallenge, hf26challenge
 cover_image: https://raw.githubusercontent.com/Ani0811/localbiz-ai/master/assets/screenshots/dashboard.png
 canonical_url: https://github.com/Ani0811/localbiz-ai
 ---
